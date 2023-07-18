@@ -1,9 +1,21 @@
+import { useContext } from 'react'
+import { useReducer } from 'react'
+import { todoReducer } from '@/state/reducer'
+import { initialTodoState } from '@/state/global'
+import { MainContext } from '@/state/global'
 import Head from 'next/head'
-
-import styles from '@/styles/Home.module.css'
+import DefaultLayout from '@/layouts/defaultLayout'
+import TodoList from '@/components/todoList'
+import Form from '@/components/form'
+import styles from '@/styles/Home.module.scss'
+import { isJsxElement } from 'typescript'
+import { Children } from 'react'
 
 
 export default function Home() {
+  const [state, dispatch] = useReducer(todoReducer, initialTodoState);
+
+  
   return (
     <>
       <Head>
@@ -12,9 +24,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main}`}>
-        
-      </main>
+      
+        <main className={`${styles.main}`}>
+          <h1 className={styles.main__title}>To Do Widget</h1>
+          <MainContext.Provider value={{state, dispatch}}>
+            <Form/>
+            <TodoList />
+          </MainContext.Provider>
+          
+        </main>  
     </>
   )
 }
