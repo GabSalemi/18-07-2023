@@ -11,18 +11,24 @@ import AddInput from "../addInput";
 const Form = () => {
     const [category, setCategory] = useState("")
     const [addedTodo, setAddedTodo] = useState("")
-    const [todos, setTodos] = useState([])
 
     const {state, dispatch} = useContext(MainContext)
 
     const onHandleSubmit = (e : any) => {
         e.preventDefault()
-        todos.push()
-        dispatch({type: "ADD_TODO", payload: {
-            id: 1,
+        
+        
+        
+        if (addedTodo === "") {
+            dispatch({type: "FIRST_TODO", payload: {
+                todo: addedTodo,
+                type: category
+            }})
+        } else {
+            dispatch({type: "ADD_TODO", payload: {
             todo: addedTodo,
             type: category
-        }})
+        }})}
     }
 
 

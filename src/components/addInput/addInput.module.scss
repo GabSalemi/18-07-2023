@@ -1,0 +1,60 @@
+.category__div  {
+    padding: 6px;
+    border: 1px inset $secondColor;
+    border-radius: 12px;
+    font-family: $secondFont;
+    color: $titleColor;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.category__div:nth-child(1) {
+    background: $secondColor;
+}
+
+.category__div:nth-child(2) {
+    background: $secondColor;
+}
+
+.category__div:nth-child(3) {
+    background: $secondColor;
+}
+
+.category__div:nth-child(4) {
+    background: $secondColor;
+}
+
+.category__div:nth-child(5) {
+    background: $secondColor;
+}
+
+.category__div:hover:nth-child(1) {
+    background: $colorOne;
+}
+
+.category__div:hover:nth-child(2) {
+    background: $colorTwo;
+}
+
+.category__div:hover:nth-child(3) {
+    background: $colorThree;
+}
+
+.category__div:hover:nth-child(4) {
+    background:  $colorFour;
+}
+
+.category__div:hover:nth-child(5) {
+    background: $colorFive;
+}
+
+
+.text__input {
+    width: 50%;
+    padding: 12px;
+    margin: 12px;
+    border-radius: 12px;
+    font-family: $mainFont;
+}

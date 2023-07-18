@@ -4,10 +4,16 @@ import { useContext, useReducer } from "react";
 
 const TodoList = () => {
     const { state, dispatch } = useContext(MainContext);
-    console.log(MainContext)
+
+    const onHandleClick = (value : string) => {
+        
+      dispatch({type: "REMOVE_TODO", payload: value})
+     
+    }
+
     return <div className={styles.todo__list}>
         <ul>
-            {state.todo && <li>{state.todo}</li>}
+            {state !== "" && state.map((el : {todo : string}) => <li className={styles.todo__item} onClick={(e) => onHandleClick(el.todo)}>{el.todo}</li> )}
         </ul>
     </div>
 }

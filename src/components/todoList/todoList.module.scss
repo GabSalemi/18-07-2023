@@ -1,0 +1,10 @@
+.todo__item {
+    font-family: $secondFont;
+    list-style: none;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.todo__item:hover {
+    border: 1px solid $secondColor;
+}
