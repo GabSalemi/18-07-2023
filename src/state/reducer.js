@@ -1,14 +1,17 @@
+
+
 export const todoReducer = (state, action) => {
+
+    
     switch (action.type) {
+      case "FIRST_TODO": 
+        return [action.payload]
       case "ADD_TODO": 
-        return {id: 2,
-          todo: action.payload.todo,
-          type: action.payload.type
-        };
-      case "DELETE_TODO":
-        return 
-      case "DELETE_ALL_TODO":
-        return 
+        return [...state, action.payload]
+      case "REMOVE_TODO":
+         
+       let filteredState =  state.filter(item=> item.todo !== action.payload)
+        return filteredState
       default:
         console.log(state);
         return state;
