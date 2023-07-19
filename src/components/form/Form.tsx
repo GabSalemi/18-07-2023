@@ -16,23 +16,12 @@ const Form = () => {
 
     const onHandleSubmit = (e : any) => {
         e.preventDefault()
-       
-        
-        
-        if (addedTodo === "" || state.lenght >= 10) {
-            dispatch({type: "FIRST_TODO", payload: {
-                id: Math.floor(Math.random() * 10000),
-                todo: addedTodo,
-                type: category,
-                completed: false
-            }})
-        } else {
             dispatch({type: "ADD_TODO", payload: {
             id: Math.floor(Math.random() * 10000),
             todo: addedTodo,
             type: category,
             completed: false
-        }})}
+        }})
     }
 
 
