@@ -10,6 +10,7 @@ const TodoList = () => {
     const [completedTodo, setCompletedTodo] = useState({})
 
     const onHandleClick = (value : number) => {
+        console.log(value)
       dispatch({type: "REMOVE_TODO", payload: value})
     }
 
@@ -28,12 +29,12 @@ const TodoList = () => {
 
     return <div className={styles.todo__list}>
         <ul>
-            {state !== "" &&
-             state.map((el : {id: number, todo : string, type : string, completed: boolean}) => 
+            {state.todos !== "" &&
+             state.todos.map((el : {id: number, todo : string, type : string, completed: boolean}) => 
              <li 
              className={`${styles.todo__item} ${el.type}`} 
              key={el.id}
-             onClick={(e) => onHandleClick(el.id)} 
+             onClick={() => onHandleClick(el.id)} 
              draggable="true"
              onDrag={() => onHandleDrag({id: el.id, todo: el.todo, type: el.type, completed: el.completed})}>
                 {el.todo}
