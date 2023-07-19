@@ -2,7 +2,7 @@ import { useContext, useReducer } from 'react'
 import { useState } from 'react'
 import Head from 'next/head'
 import { MainContext } from "../../state/global"
-import { initialTodoState } from "../../state/global"
+import { initialState } from "../../state/global"
 import { todoReducer } from "../../state/reducer"
 
 import styles from "./form.module.scss"
@@ -16,18 +16,22 @@ const Form = () => {
 
     const onHandleSubmit = (e : any) => {
         e.preventDefault()
+       
         
         
-        
-        if (addedTodo === "") {
+        if (addedTodo === "" || state.lenght >= 10) {
             dispatch({type: "FIRST_TODO", payload: {
+                id: Math.floor(Math.random() * 10000),
                 todo: addedTodo,
-                type: category
+                type: category,
+                completed: false
             }})
         } else {
             dispatch({type: "ADD_TODO", payload: {
+            id: Math.floor(Math.random() * 10000),
             todo: addedTodo,
-            type: category
+            type: category,
+            completed: false
         }})}
     }
 
