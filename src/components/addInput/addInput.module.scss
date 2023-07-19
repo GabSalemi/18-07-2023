@@ -8,6 +8,10 @@
     flex-direction: row;
     gap: 4px;
     margin-bottom: 12px;
+    input {
+        width: 12px;
+        background-color: $secondColor;
+    }
 }
 
 .category__div:nth-child(1) {
@@ -31,25 +35,49 @@
 }
 
 .category__div:hover:nth-child(1) {
-    background: $colorOne;
+    background: $white;
+    box-shadow: 1px 2px black;
 }
 
 .category__div:hover:nth-child(2) {
-    background: $colorTwo;
+    background: $white;
+    box-shadow: 1px 2px black;
 }
 
 .category__div:hover:nth-child(3) {
-    background: $colorThree;
+    background: $white;
+    box-shadow: 1px 2px black;
 }
 
 .category__div:hover:nth-child(4) {
-    background:  $colorFour;
+    background:  $white;
+    box-shadow: 1px 2px black;
 }
 
 .category__div:hover:nth-child(5) {
-    background: $colorFive;
+    background: $white;
+    box-shadow: 1px 2px black;
 }
 
+.category__div:checked:nth-child(1) {
+    color: $colorOne;
+}
+
+.category__div:checked:nth-child(2) {
+    background: $colorTwo;
+}
+
+.category__div:checked:nth-child(3) {
+    background: $colorThree;
+}
+
+.category__div:checked:nth-child(4) {
+    background:  $colorFour;
+}
+
+.category__div:checked:nth-child(5) {
+    background: $colorFive;
+}
 
 .text__input {
     width: 50%;
