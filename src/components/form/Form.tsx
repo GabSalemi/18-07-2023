@@ -4,6 +4,8 @@ import Head from 'next/head'
 import { MainContext } from "../../state/global"
 import { initialState } from "../../state/global"
 import { todoReducer } from "../../state/reducer"
+import { collection, addDoc } from "firebase/firestore";
+import { dataBase } from "@/plugins/firebase";
 
 import styles from "./form.module.scss"
 import AddInput from "../addInput";

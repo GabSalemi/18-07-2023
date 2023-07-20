@@ -1,11 +1,20 @@
 import styles from "./todoList.module.scss"
 import { MainContext } from "@/state/global";
 import { todo } from "node:test";
-import { useContext, useReducer, useState } from "react";
-import { Value } from "sass";
+import { useContext, useEffect, useReducer, useState } from "react";
+import { dataBase } from "@/plugins/firebase";
+import { collection, getDocs } from "firebase/firestore"; 
+import { promises } from "node:dns";
 
 
 const TodoList = () => {
+
+   /*  useEffect( () => {async () => {
+        const querySnapshot = await getDocs(collection(dataBase, "user"));
+        querySnapshot.forEach((doc) => {doc});}
+    }) */
+
+
     const { state, dispatch } = useContext(MainContext);
     const [completedTodo, setCompletedTodo] = useState({})
 

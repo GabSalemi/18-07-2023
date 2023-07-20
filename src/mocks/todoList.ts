@@ -6,7 +6,7 @@ interface todos {
 }
 
 
-export const randomTodos = [
+export const randomTodos : todos[] = [
     {
     id: 1,
     todo: "Do something nice for someone I care about",

@@ -1,5 +1,5 @@
 .form__container {
-    width: 90%;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 12px;
+        gap: 1px
     }
     input {
         width: 40%;

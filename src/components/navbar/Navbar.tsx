@@ -24,8 +24,10 @@ const toLoginPage = () => {
 
     return <div className={styles.layout__div}>
             <img src="login.png" alt="login_Icon" onClick={toLoginPage}/> 
-
-            {props.isLogged ? <h4>{props.username}</h4> : null}
+            <div>
+                {props.isLogged ? <h4>{props.username}</h4> : null}
+            </div>
+            
     </div>
 }
 
