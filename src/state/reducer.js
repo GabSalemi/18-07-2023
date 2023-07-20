@@ -28,7 +28,7 @@ export const todoReducer = (state, action) => {
       case "RANDOM_TODO":
         return {
           ...state,
-          todos: [randomTodos],
+          todos: randomTodos,
         };
       default:
         console.log(state);
@@ -39,6 +39,7 @@ export const todoReducer = (state, action) => {
   export const loginReducer = (state, action) => {
     switch (action.type) {
       case "LOGIN": 
+      console.log(action.payload)
         return {
           ...state,
           username: action.payload,

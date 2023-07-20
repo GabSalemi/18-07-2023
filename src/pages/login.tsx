@@ -7,31 +7,36 @@ import { initialState } from '@/state/global'
 import Router from 'next/router'
 import Head from 'next/head'
 import Navbar from '@/components/navbar'
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "@/plugins/firebase";
 
+import styles from "../styles/login.module.scss"
 
 export default function Login() {
   const {state, dispatch} = useContext(MainContext)
-  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
   const [isLogged, setIsLogged] = useState(false)
 
-
-
+  const googleAuth= async (e: any) => {
+    e.preventDefault()
+        const res = await signInWithPopup(auth, provider);
+        dispatch({ type: "LOGIN", payload: res.user.email });
+        setEmail(res.user.email as string)
+        Router.push("/")
+    };
 
   const onHandleChange = (e: any) => {
-      setUsername(e.target.value)
-
+      setEmail(e.target.value)
   }
 
   const onHandleSubmit = (e : any) => {
       e.preventDefault()
-      if (state.username.includes(username)) {
+      if (email !== "") {
         setIsLogged(true)
         Router.push("/")
-        dispatch({type: "LOGIN", payload: username})
-      }}
-     
+        dispatch({type: "LOGIN", payload: email})
+      } else {Router.push("/login")}}
 
-  
   return (
     <>
       <Head>
@@ -41,11 +46,12 @@ export default function Login() {
       </Head>
       <MainContext.Provider value={{state, dispatch}}>
         <main >
-          <Navbar username={username} isLogged={isLogged}/>
-          <h1>LoginPage</h1>
-          <form>
+          <Navbar username={email} isLogged={isLogged}/>
+          <h1 className={styles.login__title}>LoginPage</h1>
+          <form className={styles.login__form}>
                 <input type="text" onChange={(e: any) => onHandleChange(e)}/>
                 <input type="submit" onClick={(e : any) => onHandleSubmit(e)}/>
+                <button onClick={(e: any) => googleAuth(e)}>Accedi con Google</button>
           </form>
 
           
