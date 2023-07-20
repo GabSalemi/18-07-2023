@@ -10,6 +10,7 @@ import Form from '@/components/form'
 import styles from '@/styles/Home.module.scss'
 import { isJsxElement } from 'typescript'
 import { Children } from 'react'
+import Navbar from '@/components/navbar'
 
 
 export default function Home() {
@@ -26,6 +27,7 @@ export default function Home() {
       </Head>
       
         <main className={`${styles.main}`}>
+          <Navbar />
           <h1 className={styles.main__title}>To Do Widget</h1>
           <MainContext.Provider value={{state, dispatch}}>
             <Form/>
