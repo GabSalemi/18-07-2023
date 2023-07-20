@@ -1,14 +1,35 @@
 import { useContext } from 'react'
 import { useReducer } from 'react'
+import { useState } from 'react'
 import { loginReducer, todoReducer } from '@/state/reducer'
 import { MainContext } from '@/state/global'
 import { initialState } from '@/state/global'
+import Router from 'next/router'
 import Head from 'next/head'
 import Navbar from '@/components/navbar'
 
 
 export default function Login() {
-  const [state, dispatch] = useReducer(loginReducer, initialState);
+  const {state, dispatch} = useContext(MainContext)
+  const [username, setUsername] = useState("")
+  const [isLogged, setIsLogged] = useState(false)
+
+
+
+
+  const onHandleChange = (e: any) => {
+      setUsername(e.target.value)
+
+  }
+
+  const onHandleSubmit = (e : any) => {
+      e.preventDefault()
+      if (state.username.includes(username)) {
+        setIsLogged(true)
+        Router.push("/")
+        dispatch({type: "LOGIN", payload: username})
+      }}
+     
 
   
   return (
@@ -20,8 +41,12 @@ export default function Login() {
       </Head>
       <MainContext.Provider value={{state, dispatch}}>
         <main >
-          <Navbar />
+          <Navbar username={username} isLogged={isLogged}/>
           <h1>LoginPage</h1>
+          <form>
+                <input type="text" onChange={(e: any) => onHandleChange(e)}/>
+                <input type="submit" onClick={(e : any) => onHandleSubmit(e)}/>
+          </form>
 
           
         </main>  

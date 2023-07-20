@@ -4,38 +4,28 @@ import { MainContext } from '@/state/global'
 import { useContext, useReducer } from 'react'
 import { loginReducer } from '@/state/reducer'
 import { initialState } from '@/state/global'
+import Router from "next/router"
 import AddInput from "@/components/addInput"
 import Login from "@/pages/login"
 
-const Navbar = () => {
-    const [username, setUsername] = useState("")
-    const [usernameInput, setUsernameInput] = useState(false)
-    const {state, dispatch} = useContext(MainContext)
+type NavbarProps = {
+    username?: string,
+    isLogged?: boolean
+}
 
-    const onHandleLogin = (e : any) => {
-        e.preventDefault()
-        setUsernameInput(!usernameInput)
-    }
-
-    const onHandleChange = (e: any) => {
-        setUsername(e.target.value)
-
-    }
-
-    const onHandleSubmit = (e : any) => {
-        e.preventDefault()
-        setUsernameInput(!usernameInput)
-        dispatch({type: "LOGIN", payload: username})
-    }
+const Navbar = (props: NavbarProps) => {
+    
+const toLoginPage = () => {
+    if (Router.asPath === "/login") {
+        Router.push("/")
+    } else {Router.push("/login")}
+    
+}
 
     return <div className={styles.layout__div}>
-            <img src="login.png" alt="login_Icon" onClick={(e) => onHandleLogin(e)}/> 
-            {usernameInput === true ? 
-            <form>
-                <input type="text" onChange={(e: any) => onHandleChange(e)}/>
-                <input type="submit" onClick={(e : any) => onHandleSubmit(e)}/>
-            </form> : 
-            <h4>{state.username}</h4>}
+            <img src="login.png" alt="login_Icon" onClick={toLoginPage}/> 
+
+            {props.isLogged ? <h4>{props.username}</h4> : null}
     </div>
 }
 
